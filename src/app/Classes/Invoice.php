@@ -8,6 +8,12 @@ class Invoice{
     }
 
     public function create(){
-        return 'Create invoice';
+        return '<form action="/invoices/create" method="post"><label>Amount<input type="text" name="amount"></label></form>';
+    }
+
+    public function store(){
+        $amount = $_POST['amount'];
+
+        var_dump($amount);
     }
 }
