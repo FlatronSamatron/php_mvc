@@ -4,6 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $router = new App\Router();
 
+const STORAGE_PATH = __DIR__ . '/../storage';
+
 /**
  * Чтобы получить полное имя класса ClassName, используйте ClassName::class
  * для вызова call_user_func класса нужно передать массив [названия класса, метод] метод должен быть static
@@ -13,6 +15,7 @@ $router = new App\Router();
 
 $router
     ->get('/', [App\Classes\Home::class, 'index'])
+    ->post('/upload', [App\Classes\Home::class, 'upload'])
     ->get('/invoices', [App\Classes\Invoice::class, 'index']) 
     ->get('/invoices/create', [App\Classes\Invoice::class, 'create'])
     ->post('/invoices/create', [App\Classes\Invoice::class, 'store']);
@@ -24,9 +27,10 @@ $router
 // $router->register('/invoices', function(){
 //     echo "Invoices";
 // });
-echo "<pre>";
-print_r($router->routes());
-echo "</pre>";
+
+// echo "<pre>";
+// print_r($router->routes());
+// echo "</pre>";
 
 echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
 
