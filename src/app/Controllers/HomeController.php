@@ -2,14 +2,11 @@
 
 namespace App\Controllers;
 
-class Home{
-    public function index(): string{
-        return <<<FORM
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="receipt">
-                <button type="submit">Upload</button>
-            </form>
-        FORM;
+use App\View;
+
+class HomeController{
+    public function index(): View{
+        return View::make('index', ['foo' => 'bar']);
     }
 
     public function upload(): void{
