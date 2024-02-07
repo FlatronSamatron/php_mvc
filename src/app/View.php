@@ -10,7 +10,7 @@ class View
     {
     }
 
-    public static function make(string $view, array $params = [])
+    public static function make(string $view, array $params = []): static
     {
         return new static($view, $params);
     }
@@ -29,8 +29,6 @@ class View
         //            $$key = $value;
         //        }
         extract($this->params);
-
-        var_dump($this);
 
         ob_start();
         include $viewPat;

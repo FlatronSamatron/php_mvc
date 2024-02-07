@@ -50,7 +50,7 @@ class Router{
             }
         }
 
-        throw new RouteNotFoundException();
+//        throw new RouteNotFoundException();
         
     }
 }
